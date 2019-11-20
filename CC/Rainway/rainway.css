@@ -51,12 +51,14 @@ New styles Rainway V1
     float: right;
 }
 
-.edit .button {
-    position: absolute;
-    background: url(assets/abxy.svg);
+.edit .abxy {
     background-repeat:no-repeat;
     height: 98px;
     width: 192px;
+}
+.edit .button {
+    position: absolute;
+    background: url(assets/abxy.svg);
 }
 
 .edit .button.pressed {
