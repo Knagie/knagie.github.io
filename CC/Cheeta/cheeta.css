@@ -91,6 +91,7 @@ Cheeta V1
     opacity: 0;
 }
 .edit .stick {
-    background: url(assets/stick.svg)
+    background: url(assets/stick.svg);
+    background-position: -85px 0;
 }
 /*End of styles*/
