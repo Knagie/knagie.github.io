@@ -12,7 +12,7 @@ New styles Rainway V1
 }
 
 .edit .quadrant {
-  display: none;
+  background: url(assets/quadrant.svgz);
 }
 
 .edit .p0 {
@@ -86,6 +86,7 @@ New styles Rainway V1
     top: 5px;
 }
 .xbox .quadrant {
-    background: url(assets/quadrant.svgz);
+    
 }
+.xbox .bumper
 /*End of styles*/
