@@ -85,4 +85,7 @@ New styles Rainway V1
     left: 55px;
     top: 5px;
 }
+.xbox .quadrant {
+    background: url(assets/quadrant.svgz);
+}
 /*End of styles*/
