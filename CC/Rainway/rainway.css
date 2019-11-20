@@ -36,7 +36,6 @@ New styles Rainway V1
     width: 33px;
     height: 33px;
     opacity: 0;
-    background-repeat: no-repeat;
 }
 
 .edit .back.pressed, .edit .start.pressed {
