@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Knagie</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="./includes/menu.js"></script>-->
+	<!-- <script src="./includes/card.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="includes/styles.css">
+	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i|Ubuntu+Mono:400,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+	<!-- Menu script -->
+	<script> 
+		var $menu = $('.Menu-list'),
+			$item = $('.Menu-list-item'),
+			w = $(window).width(), //window width
+			h = $(window).height(); //window height
+
+		$(window).on('mousemove', function(e) {
+		  var offsetX = 0.5 - e.pageX / w, //cursor position X
+			  offsetY = 0.5 - e.pageY / h, //cursor position Y
+			  dy = e.pageY - h / 2, //@h/2 = center of poster
+			  dx = e.pageX - w / 2, //@w/2 = center of poster
+			  theta = Math.atan2(dy, dx), //angle between cursor and center of poster in RAD
+			  angle = theta * 180 / Math.PI - 90, //convert rad in degrees
+			  offsetPoster = $menu.data('offset'),
+			  transformPoster = 'translate3d(0, ' + -offsetX * offsetPoster + 'px, 0) rotateX(' + (-offsetY * offsetPoster) + 'deg) rotateY(' + (offsetX * (offsetPoster * 2)) + 'deg)'; //poster transform
+
+		  //get angle between 0-360
+		  if (angle < 0) {
+			angle = angle + 360;
+		  }
+
+		  //poster transform
+		  $menu.css('transform', transformPoster);
+
+		  //parallax for each layer
+		  $item.each(function() {
+			var $this = $(this),
+				offsetLayer = $this.data('offset') || 0,
+				transformLayer = 'translate3d(' + offsetX * offsetLayer + 'px, ' + offsetY * offsetLayer + 'px, 20px)';
+
+			$this.css('transform', transformLayer);
+		  });
+		});
+	</script>
+	<!-- Menu script end -->
+	<!-- IconCard script -->
+	<script>
+		$(function() {
+			$('#i-wrapper1').click(function() {
+				$('#i-content1').toggleClass('open');
+				$(this).toggleClass('open');
+			})
+		})
+		$(function() {
+			$('#i-wrapper2').click(function() {
+				$('#i-content2').toggleClass('open');
+				$(this).toggleClass('open');
+			})
+		})
+		$(function() {
+			$('#i-wrapper3').click(function() {
+				$('#i-content3').toggleClass('open');
+				$(this).toggleClass('open');
+			})
+		})
+	</script>
+	<!-- IconCard script end -->
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="0">
+<!-- @NOTE: the onclicks are used for touch devices since I'm lazy and didnt use <a> tags -->
+    <nav class="navbar">
+        <div class="Menu">
+          <ul class="Menu-list" data-offset="10">
+            <li id="title">
+              <a>Knagie</a>
+            </li>
+            <a href="#social"><li class="Menu-list-item" onclick>
+              About
+              <span class="Mask"><span>Social</span></span>
+              <span class="Mask"><span>Social</span></span>
+            </li></a>
+            <a href="#about"><li class="Menu-list-item" data-offset="12" onclick>
+              Work
+              <span class="Mask"><span>About</span></span>
+              <span class="Mask"><span>About</span></span>
+			</li></a>
+            <a href="#contact"><li class="Menu-list-item" data-offset="8" onclick>
+              Contact
+              <span class="Mask"><span>Contact</span></span>
+              <span class="Mask"><span>Contact</span></span>
+            </li></a>
+          </ul>
+        </div>
+    </nav>
+	<div id="social" class="block">
+        <div class="content">
+			<h3>Socialmedia links:</h3>
+			<p>
+			content
+			</p>
+		</div>
+	</div>
+    <div id="about" class="block">
+        <div id="acoll" class="acolumn content" >
+			<h3>About me:</h3>
+			<p>content</p>
+        </div>
+        <div id="acolm" class="acolumn content" >
+			<h3>Hobby thingies:</h3>
+			<p>content</p>
+        </div>
+        <div id="acolr" class="acolumn content" >
+            <h3 id="icons-title">Things I help out with:</h3>
+            <div id="icons-wrapper">
+				<div class="card mb-3 icon1">
+					<img class="card-header icon1" src="/images/D_logo-color.svg" alt="Discord logo">
+					<div class="card-body icon1">
+						<p class="card-title">Event attendee at</p>
+						<p class="card-text"><a id="discord-url" href="https://discordapp.com/">Discord</a> <a id="hypesquad-url" href="https://discordapp.com/hypesquad">HypeSquad</a></p>
+					</div>
+				</div>
+				<div id="icon2" class="card mb-3">
+					<img class="card-header" src="/images/LMD_logo-mountain.svg" alt="Lonely Mountains: Downhill logo">
+					<div class="card-body">
+						<p class="card-title">Moderator at</p>
+						<p class="card-text"><a id="lmd-url" href="https://lonelymountains.com/">Lonely Mountains: Downhill</a></p>
+					</div>
+				</div>
+				<div id="icon3" class="card mb-3" >
+					<img class="card-header" src="/images/RW_logo-blue.svg" alt="Rainway logo">
+					<div class="card-body">
+						<p class="card-title">Helper at</p>
+						<p class="card-text"><a id="rainway-url" href="https://rainway.com/">Rainway</a></p>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+    <div id="contact" class="block">
+	<div id="contactbg" class="block">
+        <div class="content">
+			<h3>Contact me:</h3>
+			<p>
+			Parallax <3
+			</p>
+		</div>
+    </div>
+	</div>
+</body>
+</html>
