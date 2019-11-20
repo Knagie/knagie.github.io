@@ -55,6 +55,8 @@ New styles Rainway V1
     position: absolute;
     background: url(assets/abxy.svg);
     background-repeat:no-repeat;
+    height: 98px;
+    width: 192px;
 }
 
 .edit .button.pressed {
