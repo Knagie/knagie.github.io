@@ -1,0 +1,99 @@
+/*
+Find me @Jayraydee on twitter!
+Terms and Conditions:
+No Refunds on digital goods, If you have questions concerning your order please contact us.
+Your purchase grants you the right to use and display the images for commercial use via streaming,
+recorded and rebroadcasted media. 
+Your license does not include the right to redistribute copies in anyway, including but not limited to:
+advertising, stock photography, print sale profits, or resale of any nature. Your purchase of the original
+files releases The Seller from any liability due to loss or damage of the images, and also releases the Seller
+from any obligation to maintain copies of any digital file, image, or photograph. You hereby grant to The 
+Seller the right to use and publish images, graphics, or media to further promote their services, including 
+portfolio, web site, display, advertisement, and editorial use. The Seller agrees to limit the use of these 
+images, graphics, or media to promotional use only.
+*/
+/*BEGIN XBOX Controller Styling*/
+
+.controller.edit {
+  background: url(assets/base.svg);
+}
+
+.edit.disconnected {
+  background: url(assets/disconnected.svg);
+}
+
+.edit .quadrant {
+  display: none;
+}
+
+.edit .p0 {
+    display: none;
+}
+
+.edit .p1 {
+    display: none;
+}
+
+.edit .p2 {
+    display: none;
+}
+
+.edit .p3 {
+    display: none;
+}
+
+.edit .back, .edit .start {
+    background: url(assets/start-select.svg);
+    width: 33px;
+    height: 33px;
+    opacity: 0;
+}
+
+.edit .back.pressed, .edit .start.pressed {
+    opacity: 1;
+}
+
+.edit .back {
+    float: left;
+}
+
+.edit .start {
+    background-position: 33px 0px;
+    float: right;
+}
+
+.edit .button {
+  position: absolute;
+  background: url(assets/abxy.svg);
+}
+
+.edit .button.pressed {
+    background-position-y: -48px;
+    margin-top: 5px;
+    opacity: 1;
+}
+
+.edit .a {
+    background-position: 0 0;
+    top: 108px;
+    left: 55px;
+}
+
+.edit .b {
+    background-position: -49px 0;
+    top: 57px;
+    right: 3px;
+}
+
+.edit .x {
+    background-position: -98px 0;
+    top: 57px;
+    left: 4px;
+}
+
+.edit .y {
+    background-position: 48px 0;
+    left: 55px;
+    top: 5px;
+}
+/*END XBOX Controller Styling*/
