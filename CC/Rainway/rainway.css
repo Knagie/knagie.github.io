@@ -85,8 +85,10 @@ New styles Rainway V1
     left: 55px;
     top: 5px;
 }
-.xbox .quadrant {
-    
+.edit .bumper {
+    background: url(assets/bumper.svg);
+    width: 170px;
+    height: 61px;
+    opacity: 0;
 }
-.xbox .bumper
 /*End of styles*/
