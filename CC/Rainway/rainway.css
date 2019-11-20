@@ -52,10 +52,7 @@ New styles Rainway V1
 }
 
 .edit .button {
-    
     position: absolute;
-    width:52px;
-    height:52px;
     background: url(assets/abxy.svg);
 }
 
@@ -72,19 +69,19 @@ New styles Rainway V1
 }
 
 .edit .b {
-    background-position: -49px 0;
+    background-position: 49px 0;
     top: 57px;
     right: 3px;
 }
 
 .edit .x {
-    background-position: -98px 0;
+    background-position: 98px 0;
     top: 57px;
     left: 4px;
 }
 
 .edit .y {
-    background-position: 48px 0;
+    background-position: 147px 0;
     left: 55px;
     top: 5px;
 }
