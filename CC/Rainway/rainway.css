@@ -54,6 +54,7 @@ New styles Rainway V1
 .edit .button {
     position: absolute;
     background: url(assets/abxy.svg);
+    background-repeat:no-repeat;
 }
 
 .edit .button.pressed {
