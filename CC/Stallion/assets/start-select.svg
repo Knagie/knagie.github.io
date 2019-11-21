@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="67.40899658203125px" height="33.20600128173828px"
+	 viewBox="0 0 67.4 33.2" style="enable-background:new 0 0 67.4 33.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;fill:none;}
+	.st1{fill:#F5F5F5;stroke:#FFFFFF;stroke-width:0.9997;stroke-miterlimit:9.9969;}
+	.st2{fill:#EAEAEA;}
+</style>
+<rect id="svgEditorBackground" y="0" class="st0" width="67.4" height="33.2"/>
+<g id="Menu_Pressed">
+	<path class="st1" d="M66.9,16.6c0,8.9-7.2,16.1-16.1,16.1s-16.1-7.2-16.1-16.1S41.9,0.5,50.8,0.5S66.9,7.7,66.9,16.6z"/>
+	<g>
+		<rect x="43.6" y="12" class="st2" width="14.4" height="1.6"/>
+		<rect x="43.6" y="15.9" class="st2" width="14.4" height="1.6"/>
+		<rect x="43.6" y="19.7" class="st2" width="14.4" height="1.5"/>
+	</g>
+</g>
+<g id="Switcher_PRessed">
+	<path class="st1" d="M32.7,16.6c0,8.9-7.2,16.1-16.1,16.1S0.5,25.5,0.5,16.6S7.7,0.5,16.6,0.5S32.7,7.7,32.7,16.6z"/>
+	<g>
+		<polygon class="st2" points="14.1,16.5 11.1,16.5 11.1,12.7 16.5,12.7 16.5,14 18.3,14 18.3,11 9.4,11 9.4,18.4 14.1,18.4 		"/>
+		<path class="st2" d="M14.8,14.7v7.6h9v-7.6C23.8,14.7,14.8,14.7,14.8,14.7z M22,20.4h-5.5v-3.9H22V20.4z"/>
+	</g>
+</g>
+</svg>
