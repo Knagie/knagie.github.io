@@ -1,0 +1,97 @@
+/*
+Voodoo V1
+*/
+/*Styles*/
+
+.controller.edit {
+  background: url(assets/base.svg);
+}
+
+.edit.disconnected {
+  background: url(assets/disconnected.svg);
+}
+
+.edit .quadrant {
+  background: url(assets/quadrant.svgz);
+}
+
+.edit .p0 {
+    display: none;
+}
+
+.edit .p1 {
+    display: none;
+}
+
+.edit .p2 {
+    display: none;
+}
+
+.edit .p3 {
+    display: none;
+}
+
+.edit .back, .edit .start {
+    background: url(assets/start-select.svg);
+    width: 33px;
+    height: 33px;
+    opacity: 0;
+}
+
+.edit .back.pressed, .edit .start.pressed {
+    opacity: 1;
+}
+
+.edit .back {
+    float: left;
+}
+
+.edit .start {
+    float: right;
+}
+
+.edit .button {
+    position: absolute;
+    background: url(assets/abxy.svg);
+}
+
+.edit .button.pressed {
+    background-position-y: -48px;
+    margin-top: 5px;
+    opacity: 1;
+}
+
+.edit .a {
+    background-position: 0 0;
+    top: 108px;
+    left: 55px;
+}
+
+.edit .b {
+    background-position: -49px 0;
+    top: 57px;
+    right: 0px;
+}
+
+.edit .x {
+    background-position: -98px 0;
+    top: 57px;
+    left: 4px;
+}
+
+.edit .y {
+    background-position: 48px 0;
+    left: 55px;
+    top: 5px;
+}
+.edit .bumper {
+    background: url(assets/bumper.svg);
+    width: 170px;
+    height: 61px;
+    opacity: 0;
+}
+.edit .stick {
+    background: url(assets/stick.svg);
+    background-position: -85px 0;
+}
+/*End of styles*/
