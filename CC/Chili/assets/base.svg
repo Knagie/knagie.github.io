@@ -39,19 +39,19 @@
 		C751.5,469,726.9,370,664.2,214z"/>
 	<g>
 		
-			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="106.4134" y1="-344.4" x2="107.5677" y2="-344.4" gradientTransform="matrix(1 0 0 -1 0 -152)">
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="106.4134" y1="1368.4" x2="107.5677" y2="1368.4" gradientTransform="matrix(1 0 0 1 0 -1176)">
 			<stop  offset="0" style="stop-color:#029AEB"/>
 			<stop  offset="1" style="stop-color:#161D45"/>
 		</linearGradient>
 		<path class="st0" d="M106.4,192.7c0.5-0.3,0.9-0.5,1.2-0.6C107.2,192.3,106.8,192.5,106.4,192.7z"/>
 		
-			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="642.3953" y1="-344.4" x2="643.9213" y2="-344.4" gradientTransform="matrix(1 0 0 -1 0 -152)">
+			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="642.3953" y1="1368.4" x2="643.9213" y2="1368.4" gradientTransform="matrix(1 0 0 1 0 -1176)">
 			<stop  offset="0" style="stop-color:#029AEB"/>
 			<stop  offset="1" style="stop-color:#161D45"/>
 		</linearGradient>
 		<path class="st1" d="M642.4,192c0.2,0.2,0.8,0.4,1.5,0.8C643.4,192.6,642.9,192.3,642.4,192z"/>
 		
-			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="374.9051" y1="1.9" x2="374.9051" y2="483.2297" gradientTransform="matrix(1 0 0 -1 0 632)">
+			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="374.9051" y1="1022.1" x2="374.9051" y2="540.7703" gradientTransform="matrix(1 0 0 1 0 -392)">
 			<stop  offset="0" style="stop-color:#872222"/>
 			<stop  offset="0.1025" style="stop-color:#822121"/>
 			<stop  offset="0.231" style="stop-color:#721D1D"/>
@@ -237,7 +237,7 @@
 	</g>
 	<g id="Shadeing">
 		
-			<linearGradient id="Right_2_" gradientUnits="userSpaceOnUse" x1="495.0638" y1="-366.9692" x2="398.4011" y2="-322.3047" gradientTransform="matrix(1 0 0 -1 0 -152)">
+			<linearGradient id="Right_2_" gradientUnits="userSpaceOnUse" x1="495.0638" y1="1390.9692" x2="398.4011" y2="1346.3047" gradientTransform="matrix(1 0 0 1 0 -1176)">
 			<stop  offset="0" style="stop-color:#000000"/>
 			<stop  offset="0.3726" style="stop-color:#020202;stop-opacity:0.6274"/>
 			<stop  offset="0.5069" style="stop-color:#090909;stop-opacity:0.4931"/>
@@ -254,7 +254,7 @@
 		<path id="Right_1_" class="st20" d="M437.3,237.4c-7,0.3-62.4,0.1-62.4,0.1v-80.8c0,0,99.8-0.7,102.4-0.7
 			c29.3-0.6,25.1-6.5,45-6.5C522.3,149.3,456.1,236.7,437.3,237.4z"/>
 		
-			<linearGradient id="Left_1_" gradientUnits="userSpaceOnUse" x1="-743.4954" y1="-366.3812" x2="-838.7056" y2="-322.3878" gradientTransform="matrix(-1 0 0 -1 -487.1111 -152)">
+			<linearGradient id="Left_1_" gradientUnits="userSpaceOnUse" x1="-1015.4954" y1="1390.3812" x2="-1110.7057" y2="1346.3878" gradientTransform="matrix(-1 0 0 1 -759.1111 -1176)">
 			<stop  offset="0" style="stop-color:#000000"/>
 			<stop  offset="0.3726" style="stop-color:#020202;stop-opacity:0.6274"/>
 			<stop  offset="0.5069" style="stop-color:#090909;stop-opacity:0.4931"/>
@@ -272,7 +272,7 @@
 			C229.3,149.2,291.8,236.7,314.6,237.4z"/>
 		<g id="Shouldershades">
 			
-				<linearGradient id="shouldershades_left_1_" gradientUnits="userSpaceOnUse" x1="153.3471" y1="-322.1146" x2="159.3843" y2="-336.3375" gradientTransform="matrix(1 0 0 -1 0 -152)">
+				<linearGradient id="shouldershades_left_1_" gradientUnits="userSpaceOnUse" x1="153.3471" y1="1346.1146" x2="159.3843" y2="1360.3375" gradientTransform="matrix(1 0 0 1 0 -1176)">
 				<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0"/>
 				<stop  offset="4.691958e-02" style="stop-color:#D0D0D0;stop-opacity:4.691958e-02"/>
 				<stop  offset="9.815919e-02" style="stop-color:#A5A5A5;stop-opacity:9.815919e-02"/>
@@ -289,7 +289,7 @@
 				c-24.4,0.9-55.6,12.3-81.9,23.4c-15.4,6.5-43.3,20.4-48.6,24.4c-5.7,4.4-10,9.4-13,16.9c0,0,11.5-12.4,18.8-15.7
 				C125.6,189,140.2,182.3,148.6,178.8z"/>
 			
-				<linearGradient id="shouldershades_right_1_" gradientUnits="userSpaceOnUse" x1="-1028.6028" y1="-322.4649" x2="-1022.5932" y2="-336.6223" gradientTransform="matrix(-1 0 0 -1 -431.4074 -152)">
+				<linearGradient id="shouldershades_right_1_" gradientUnits="userSpaceOnUse" x1="-1300.6028" y1="1346.465" x2="-1294.5933" y2="1360.6223" gradientTransform="matrix(-1 0 0 1 -703.4074 -1176)">
 				<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0"/>
 				<stop  offset="3.012544e-02" style="stop-color:#E7E7E7;stop-opacity:3.012544e-02"/>
 				<stop  offset="9.693062e-02" style="stop-color:#B7B7B7;stop-opacity:9.693062e-02"/>
