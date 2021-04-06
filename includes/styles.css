@@ -323,7 +323,6 @@ nav{
 .card-header{
 	padding:.75rem 1.25rem;
 	margin-bottom:0;
-	border-bottom:1px solid rgba(0,0,0,.125);
 	width:10vw
 	}
 .card-body{
@@ -331,7 +330,8 @@ nav{
 	-ms-flex:1 1 auto;
 	flex:1 1 auto;
 	padding:1.25rem;
-	background-color:rgba(0,0,0,.05)
+	background-color:rgba(0,0,0,.05);
+	border-top:1px solid rgba(0,0,0,.125);
 }
 .card-title{
 	margin-bottom:.75rem
