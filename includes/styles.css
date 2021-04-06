@@ -1,3 +1,31 @@
+/* CSS Document */
+/*
+
+Discord: 
+    Blurple: #7289da rgba(114, 137, 218, 1.0)
+    Full White: #ffffff rgba(255, 255, 255, 1.0)
+    Greyple: #a3afba rgba(163, 175, 186, 1.0)
+    Dark, but not black: #343335 rgba(52, 51, 53, 1.0)
+    Not quite black: #2c2c2c rgba(44, 44, 44, 1.0)
+    Balance: #66c0b2 rgba(102, 192, 178, 1.0)
+    Brilliance: #ef7864 rgba(239, 120, 100, 1.0)
+    Bravery: #9c88bf rgba(156, 136, 191, 1.0)
+    Oranple: #fc964b rgba(252, 150, 75, 1.0)
+    Hypesquad: #fab849 rgba(250, 184, 73, 1.0)
+    Partner: #4f7ec0 rgba(79, 126, 192, 1.0)
+    
+Rainway:
+    Dodger Blue: #029aeb rgba(2, 154, 235, 1.0)
+    Malachite: #25c85e rgba(37, 200, 94, 1.0)
+    Torea Bay: #2f2d83 rgba(47, 45, 131, 1.0)
+    Midnight Express: #161d45 rgba(22, 29, 69)
+    
+font-family: 'Ubuntu Mono', monospace;
+font-family: 'Roboto', sans-serif;
+
+*/
+
+
 body{
 	-webkit-font-smoothing:antialiased;
 	-webkit-font-kerning:normal;
@@ -17,6 +45,10 @@ html,body{
 	margin-bottom:-1px;
 	font-family:roboto,sans-serif
 	}
+
+/* Title */
+
+/*Neon*/
 #title{
 	font-size:7rem;
 	margin:20px 0;
@@ -39,6 +71,8 @@ html,body{
 #title a:hover{
 	color:#fff
 	}
+	
+/* Glow for webkit */
 @-webkit-keyframes neon5{
 	from{
 		text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff,0 0 40px #f90,0 0 70px #f90,0 0 80px #f90,0 0 100px #f90,0 0 150px #f90
@@ -47,6 +81,8 @@ html,body{
 			text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #f90,0 0 35px #f90,0 0 40px #f90,0 0 50px #f90,0 0 75px #f90
 		}
 	}
+	
+/*glow for mozilla*/
 @-moz-keyframes neon5{
 	from{
 		text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff,0 0 40px #f90,0 0 70px #f90,0 0 80px #f90,0 0 100px #f90,0 0 150px #f90
@@ -54,6 +90,8 @@ html,body{
 			text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #f90,0 0 35px #f90,0 0 40px #f90,0 0 50px #f90,0 0 75px #f90
 		}
 	}
+	
+/*glow*/
 @keyframes neon5{
 	from{
 		text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff,0 0 40px #f90,0 0 70px #f90,0 0 80px #f90,0 0 100px #f90,0 0 150px #f90
@@ -61,7 +99,8 @@ html,body{
 			text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #f90,0 0 35px #f90,0 0 40px #f90,0 0 50px #f90,0 0 75px #f90
 		}
 	}
-			
+	
+/* Menu */		
 nav{
 	height:90vh;
 	width:100vw;
@@ -136,9 +175,11 @@ nav{
 .Menu-list-item:hover::before,.Menu-list-item:active::before{
 	transform:scale(1)
 	}
+	
+/* Back to top button */
 #bTTBtn{
 	display:inline-block;
-	background-color:#ff9800;
+	background-color:#fab849;
 	width:50px;
 	height:50px;
 	text-align:center;
@@ -152,6 +193,7 @@ nav{
 	z-index:99
 	}
 #bTTBtn::after{
+	content: "\f077";
 	font-family:FontAwesome;
 	font-weight:400;
 	font-style:normal;
@@ -171,6 +213,8 @@ nav{
 	opacity:1;
 	visibility:visible
 	}
+	
+/* Content blocks */
 .block{
 	width:100vw
 	}
@@ -234,6 +278,12 @@ nav{
 #lmd-url{
 	color:#edb511
 	}
+#nerdforge-url{
+	color:#741FBE
+	}
+	
+
+/* About Icons */
 #icons-wrapper{
 	background-color:#343335;
 	border-radius:.15rem;
@@ -249,6 +299,9 @@ nav{
 	align-content:space-around;
 	padding:2vh 1vw
 	}
+	
+
+/* Bootstrap sections */
 .card{
 	position:relative;
 	display:-ms-flexbox;
