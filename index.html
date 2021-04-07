@@ -12,68 +12,74 @@
 <link rel="stylesheet" type="text/css" href="includes/styles.css">
 <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i|Ubuntu+Mono:400,700" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" type="88b67570209783d5ba7b9ae2-text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/brands.css" integrity="sha384-i2PyM6FMpVnxjRPi0KW/xIS7hkeSznkllv+Hx/MtYDaHA5VcF0yL3KVlvzp8bWjQ" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css" integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J" crossorigin="anonymous">
+<script src="./includes/bttbtn.js" type="text/javascript"></script>
+<script src="./includes/card.js" type="text/javascript"></script>
+<script src="./includes/menu.js" type="text/javascript"></script>
 
+<!--
 <script type="text/javascript"> 
-		var $menu = $('.Menu-list'),
-			$item = $('.Menu-list-item'),
-			w = $(window).width(), //window width
-			h = $(window).height(); //window height
+	var $menu = $('.Menu-list'),
+		$item = $('.Menu-list-item'),
+		w = $(window).width(), //window width
+		h = $(window).height(); //window height
 
-		$(window).on('mousemove', function(e) {
-		  var offsetX = 0.5 - e.pageX / w, //cursor position X
-			  offsetY = 0.5 - e.pageY / h, //cursor position Y
-			  dy = e.pageY - h / 2, //@h/2 = center of poster
-			  dx = e.pageX - w / 2, //@w/2 = center of poster
-			  theta = Math.atan2(dy, dx), //angle between cursor and center of poster in RAD
-			  angle = theta * 180 / Math.PI - 90, //convert rad in degrees
-			  offsetPoster = $menu.data('offset'),
-			  transformPoster = 'translate3d(0, ' + -offsetX * offsetPoster + 'px, 0) rotateX(' + (-offsetY * offsetPoster) + 'deg) rotateY(' + (offsetX * (offsetPoster * 2)) + 'deg)'; //poster transform
+	$(window).on('mousemove', function(e) {
+	  var offsetX = 0.5 - e.pageX / w, //cursor position X
+		  offsetY = 0.5 - e.pageY / h, //cursor position Y
+		  dy = e.pageY - h / 2, //@h/2 = center of poster
+		  dx = e.pageX - w / 2, //@w/2 = center of poster
+		  theta = Math.atan2(dy, dx), //angle between cursor and center of poster in RAD
+		  angle = theta * 180 / Math.PI - 90, //convert rad in degrees
+		  offsetPoster = $menu.data('offset'),
+		  transformPoster = 'translate3d(0, ' + -offsetX * offsetPoster + 'px, 0) rotateX(' + (-offsetY * offsetPoster) + 'deg) rotateY(' + (offsetX * (offsetPoster * 2)) + 'deg)'; //poster transform
 
-		  //get angle between 0-360
-		  if (angle < 0) {
-			angle = angle + 360;
-		  }
+	  //get angle between 0-360
+	  if (angle < 0) {
+		angle = angle + 360;
+	  }
 
-		  //poster transform
-		  $menu.css('transform', transformPoster);
+	  //poster transform
+	  $menu.css('transform', transformPoster);
 
-		  //parallax for each layer
-		  $item.each(function() {
-			var $this = $(this),
-				offsetLayer = $this.data('offset') || 0,
-				transformLayer = 'translate3d(' + offsetX * offsetLayer + 'px, ' + offsetY * offsetLayer + 'px, 20px)';
+	  //parallax for each layer
+	  $item.each(function() {
+		var $this = $(this),
+			offsetLayer = $this.data('offset') || 0,
+			transformLayer = 'translate3d(' + offsetX * offsetLayer + 'px, ' + offsetY * offsetLayer + 'px, 20px)';
 
-			$this.css('transform', transformLayer);
-		  });
-		});
-	</script>
+		$this.css('transform', transformLayer);
+	  });
+	});
+</script>
+-->
 
-
+<!--
 <script type="text/javascript">
-		$(function() {
-			$('#i-wrapper1').click(function() {
-				$('#i-content1').toggleClass('open');
-				$(this).toggleClass('open');
-			})
+	$(function() {
+		$('#i-wrapper1').click(function() {
+			$('#i-content1').toggleClass('open');
+			$(this).toggleClass('open');
 		})
-		$(function() {
-			$('#i-wrapper2').click(function() {
-				$('#i-content2').toggleClass('open');
-				$(this).toggleClass('open');
-			})
+	})
+	$(function() {
+		$('#i-wrapper2').click(function() {
+			$('#i-content2').toggleClass('open');
+			$(this).toggleClass('open');
 		})
-		$(function() {
-			$('#i-wrapper3').click(function() {
-				$('#i-content3').toggleClass('open');
-				$(this).toggleClass('open');
-			})
+	})
+	$(function() {
+		$('#i-wrapper3').click(function() {
+			$('#i-content3').toggleClass('open');
+			$(this).toggleClass('open');
 		})
-	</script>
+	})
+</script>
+-->
 
-
+<!-- 
 <script type="text/javascript">
 		var btn = $('#bTTBtn');
 
@@ -90,11 +96,12 @@
 		  $('html, body').animate({scrollTop:0}, '300');
 		});
 	</script>
-
+ -->
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="0">
 
-<a id="bTTBtn"></a>
+<a href="#" id="bTTBtn" style="display: none;"></a>
+<!-- <a id="bTTBtn"></a> -->
 
 <nav class="navbar">
 	<div class="Menu">
@@ -149,15 +156,15 @@
 	<div id="acolr" class="acolumn content">
 		<h3 id="icons-title">Things I help out with:</h3>
 		<div id="icons-wrapper">
-			<div class="card mb-3 icon1">
+			<div id="icon1" class="card mb-3">
 				<img id="icon1" class="card-header " src="./images/D_logo-color.svg" alt="Discord logo">
 				<div class="card-body icon1">
 					<p class="card-title">Event attendee at</p>
-					<p class="card-text"><a id="discord-url" href="https://discordapp.com/">Discord</a> <a id="hypesquad-url" href="https://discordapp.com/hypesquad">HypeSquad</a></p>
+					<p class="card-text"><a id="discord-url" href="https://discord.com/">Discord</a> <a id="hypesquad-url" href="https://discordapp.com/hypesquad">HypeSquad</a></p>
 				</div>
 			</div>
 			<div id="icon2" class="card mb-3">
-				<img class="card-header" src="./images/LMD_logo-mountain.svg" alt="Lonely Mountains: Downhill logo">
+				<img id="icon2" class="card-header" src="./images/LMD_logo-mountain.svg" alt="Lonely Mountains: Downhill logo">
 				<div class="card-body">
 					<p class="card-title">Moderator at the</p>
 					<p class="card-text"><a id="lmd-url" href="https://lonelymountains.com/">Lonely Mountains:<br> Downhill</a> <a id="discord-url" href="https://discord.gg/lonelymountains/">Discord server</a> </p>
@@ -170,14 +177,28 @@
 					<p class="card-text"><a id="nerdforge-url" href="https://www.youtube.com/channel/UCggHsHce2n3vvbJf_8YKrMA">Nerdforge</a> <a id="discord-url" href="https://discord.gg/nerdforge">Discord server</a><br>⠀</p>
 				</div>
 			</div>
-<!--			Jordan Sweeto/Wolfychu server
 			<div id="icon4" class="card mb-3">
 				<img id="icon4" class="card-header" src="./images/NF_Logo.svg" alt="Nerdforge logo">
 				<div class="card-body">
 					<p class="card-title">Moderator at the</p>
-					<p class="card-text"><a id="nerdforge-url" href="https://www.youtube.com/channel/UCggHsHce2n3vvbJf_8YKrMA">Nerdforge</a> <a id="discord-url" href="https://discord.gg/nerdforge">Discord server</a><br>⠀</p>
+					<p class="card-text"><a id="wolfytoons-url" href="https://www.youtube.com/channel/UCggHsHce2n3vvbJf_8YKrMA">Wolfytoons</a> <a id="discord-url" href="https://discord.gg/nerdforge">Discord server</a><br>⠀</p>
 				</div> 
--->
+			</div>
+	
+			<div id="icon5" class="card mb-3">
+				<img id="icon5" class="card-header" src="./images/NF_Logo.svg" alt="Nerdforge logo">
+				<div class="card-body">
+					<p class="card-title">Moderator at </p>
+					<p class="card-text"><a id="wolfychu-url" href="https://www.youtube.com/channel/UCggHsHce2n3vvbJf_8YKrMA">Wolfychus</a> <a id="twitch-url" href="https://discord.gg/nerdforge">Twitch channel</a><br>⠀</p>
+				</div>
+			</div>
+
+			<div id="icon6" class="card mb-3">
+				<img id="icon6" class="card-header" src="./images/NF_Logo.svg" alt="Nerdforge logo">
+				<div class="card-body">
+					<p class="card-title">Moderator at </p>
+					<p class="card-text"><a id="jordansweeto-url" href="https://www.youtube.com/channel/UCggHsHce2n3vvbJf_8YKrMA">Jordan Sweeto's</a> <a id="twitch-url" href="https://discord.gg/nerdforge">Twitch channel</a><br>⠀</p>
+				</div> 
 			</div>
 		</div>
 	</div>
@@ -192,5 +213,8 @@
 		</div>
 	</div>
 </div>
-<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="88b67570209783d5ba7b9ae2-|49" defer=""></script></body>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="88b67570209783d5ba7b9ae2-|49" defer=""></script>
+
+</body>
+
 </html>
