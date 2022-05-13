@@ -1,7 +1,7 @@
 /* CSS Document */
 /*
 
-Discord: 
+Discord:
     Blurple: #7289da rgba(114, 137, 218, 1.0)
     Full White: #ffffff rgba(255, 255, 255, 1.0)
     Greyple: #a3afba rgba(163, 175, 186, 1.0)
@@ -13,13 +13,13 @@ Discord:
     Oranple: #fc964b rgba(252, 150, 75, 1.0)
     Hypesquad: #fab849 rgba(250, 184, 73, 1.0)
     Partner: #4f7ec0 rgba(79, 126, 192, 1.0)
-    
+
 Rainway:
     Dodger Blue: #029aeb rgba(2, 154, 235, 1.0)
     Malachite: #25c85e rgba(37, 200, 94, 1.0)
     Torea Bay: #2f2d83 rgba(47, 45, 131, 1.0)
     Midnight Express: #161d45 rgba(22, 29, 69)
-    
+
 font-family: 'Ubuntu Mono', monospace;
 font-family: 'Roboto', sans-serif;
 
@@ -32,6 +32,7 @@ Icons:
 	JS: "\f3b8"
 	HTML: "\f13b"
 	CSS: "\f38b"
+	Cloudflare: "\e07d"
 */
 
 
@@ -80,7 +81,7 @@ html,body{
 #title a:hover{
 	color:#fff
 	}
-	
+
 /* Glow for webkit */
 @-webkit-keyframes neon5{
 	from{
@@ -90,7 +91,7 @@ html,body{
 			text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #f90,0 0 35px #f90,0 0 40px #f90,0 0 50px #f90,0 0 75px #f90
 		}
 	}
-	
+
 /*glow for mozilla*/
 @-moz-keyframes neon5{
 	from{
@@ -99,7 +100,7 @@ html,body{
 			text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #f90,0 0 35px #f90,0 0 40px #f90,0 0 50px #f90,0 0 75px #f90
 		}
 	}
-	
+
 /*glow*/
 @keyframes neon5{
 	from{
@@ -108,8 +109,8 @@ html,body{
 			text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #f90,0 0 35px #f90,0 0 40px #f90,0 0 50px #f90,0 0 75px #f90
 		}
 	}
-	
-/* Menu */		
+
+/* Menu */
 nav{
 	height:90vh;
 	width:100vw;
@@ -184,7 +185,7 @@ nav{
 .Menu-list-item:hover::before,.Menu-list-item:active::before{
 	transform:scale(1)
 	}
-	
+
 /* Back to top button */
 
 /* #bTTBtn{
@@ -255,7 +256,7 @@ nav{
     height:0;
     width:0;
      border:8px solid transparent;
-    border-bottom-color:#ffffff; 
+    border-bottom-color:#ffffff;
 	font-family:FontAwesome;
 	font-weight:400;
 	font-style:normal;
@@ -270,7 +271,7 @@ nav{
     opacity:1;filter:"alpha(opacity=100)";
     -ms-filter:"alpha(opacity=100)";
 }
-	
+
 /* Content blocks */
 .block{
 	width:100vw
@@ -350,7 +351,7 @@ nav{
 #wolfychu-url{
 	color:#95E0FF;
 	}
-	
+
 
 /* About Icons */
 #icons-wrapper{
@@ -359,6 +360,7 @@ nav{
 	color:#23272a;
 	font-weight:700;
 	display:flex;
+	flex: 1, 0, 25%;
 	flex-wrap:wrap;
 	flex-direction:row;
 	justify-content:space-around;
@@ -366,7 +368,7 @@ nav{
 	align-content:space-around;
 	padding:2vh 1vw
 	}
-	
+
 
 /* Bootstrap sections */
 .card{
@@ -415,7 +417,7 @@ nav{
 /*img#icon1{
 	max-width:90%
 	}*/
-.card-header{ /* use card-header class so all icons are the same width? */
+.card-header{
 	max-width:8vw;
 	margin:auto auto;
 	}
@@ -425,4 +427,71 @@ nav{
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size:cover
+	padding: 20px;
+	margin: 0 auto -50px;
 	}
+
+/* Footer styling */
+#footer-left{
+		float: left;
+}
+
+#footer-right{
+		float: right;
+}
+
+.footer > li {
+	height: 3em;
+	width: 15em;
+	border-radius: 4px;
+	border: 1px solid rgba(0,0,0,.125);
+	margin: 5%;
+	position: relative;
+}
+.footercard {
+	padding: 5%;
+	background-color: #404040;
+	float: left;
+}
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+	float: left;
+}
+
+#CodePen::before{
+
+}
+#Git::before{
+
+}
+#github{
+
+}
+#HTML{
+
+}
+#CSS{
+
+}
+#JS{
+
+}
+#StackOverflow{
+
+}
+#Cloudflare::before{
+	/* font-family:FontAwesome;
+	font-weight:400;
+	font-style:normal;
+	font-size:2em;
+	content: "\e07d"; */
+}
+#footer, #push {
+	/* background-color: #a1a1a1; */
+	background-color:#2c2c2c;
+	color:#fff;
+}
