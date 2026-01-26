@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Match Mania: Arena Challenge (Local)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap');
+        
+        :root {
+            --blue: #3b82f6;
+            --red: #ef4444;
+            --green: #10b981;
+            --yellow: #f59e0b;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        .bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0, transparent 50%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card {
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 
+                0 0 0 6px rgba(255, 255, 255, 0.1),
+                0 25px 50px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: none;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 0 10px rgba(99, 102, 241, 0.2), 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .symbol {
+            position: absolute;
+            transition: transform 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            will-change: transform;
+            pointer-events: auto;
+            z-index: 30;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .symbol:active {
+            transform: translate(-50%, -50%) scale(1.5) !important;
+        }
+
+        .team-bg-blue { background-color: var(--blue); }
+        .team-bg-red { background-color: var(--red); }
+        .team-bg-green { background-color: var(--green); }
+        .team-bg-yellow { background-color: var(--yellow); }
+        
+        .team-text-blue { color: var(--blue); }
+        .team-text-red { color: var(--red); }
+        .team-text-green { color: var(--green); }
+        .team-text-yellow { color: var(--yellow); }
+
+        @keyframes pulse-match {
+            0% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.1); filter: brightness(1.5); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+
+        .matched { animation: pulse-match 0.4s ease-out; }
+        .hidden-ui { display: none !important; }
+        
+        .score-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex: 1;
+            min-width: 60px;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        select option {
+            background-color: #1e293b;
+            color: white;
+            padding: 10px;
+        }
+
+        .team-btn {
+            transition: all 0.2s ease;
+        }
+        .team-btn:hover {
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+
+    <!-- Start Screen -->
+    <div id="landing-screen" class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-[#0f172a]">
+        <div class="max-w-md w-full text-center space-y-6">
+            <div class="space-y-2">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-500/10 border border-indigo-500/20">
+                    <span class="text-4xl animate-bounce">🎯</span>
+                </div>
+                <h1 class="text-5xl font-black tracking-tighter italic text-white">MATCH<br><span class="text-indigo-500">MANIA</span></h1>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Local Arena Edition</p>
+            </div>
+            
+            <div id="join-form" class="space-y-4">
+                <div class="space-y-2 text-left">
+                    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-2">Choose Arena Theme</label>
+                    <select id="initial-theme-select" class="w-full bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-4 text-center text-sm font-bold text-white outline-none focus:border-indigo-500 transition-all cursor-pointer">
+                        <option value="random">🎲 Random Theme</option>
+                        <option value="food">🍕 Food & Treats</option>
+                        <option value="space">🚀 Space & Sci-Fi</option>
+                        <option value="nature">🌿 Nature & Wildlife</option>
+                    </select>
+                </div>
+                
+                <button onclick="startGame()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-indigo-600/20 transition-all active:scale-95 uppercase tracking-widest">
+                    Enter Arena
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scoring Modal -->
+    <div id="scoring-modal" class="fixed inset-0 z-[60] hidden-ui flex items-center justify-center p-6 bg-slate-950/90 backdrop-blur-md">
+        <div class="w-full max-w-sm text-center space-y-8 animate-in zoom-in duration-300">
+            <div class="space-y-2">
+                <h3 class="text-3xl font-black italic text-white">MATCH FOUND!</h3>
+                <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Which team secures the point?</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="assignPoint('Blue')" class="team-btn team-bg-blue text-white py-6 rounded-3xl font-black text-xl shadow-lg">BLUE</button>
+                <button onclick="assignPoint('Red')" class="team-btn team-bg-red text-white py-6 rounded-3xl font-black text-xl shadow-lg">RED</button>
+                <button onclick="assignPoint('Green')" class="team-btn team-bg-green text-white py-6 rounded-3xl font-black text-xl shadow-lg">GREEN</button>
+                <button onclick="assignPoint('Yellow')" class="team-btn team-bg-yellow text-white py-6 rounded-3xl font-black text-xl shadow-lg">YELLOW</button>
+            </div>
+            <button onclick="closeScoring()" class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-colors">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Main Game -->
+    <main id="game-ui" class="hidden-ui h-screen flex flex-col">
+        <header class="p-4 flex justify-between items-center glass">
+            <div class="flex items-center gap-3">
+                <div class="w-1.5 h-6 bg-indigo-500 rounded-full"></div>
+                <div>
+                    <h2 class="font-black text-sm italic text-white tracking-tight leading-none">ARENA ACTIVE</h2>
+                    <p class="text-[8px] font-black text-slate-500 uppercase tracking-widest" id="theme-display">INITIALIZING...</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div id="game-status" class="px-3 py-1 bg-white/5 rounded-full text-[8px] font-black text-indigo-400 uppercase border border-white/5">...</div>
+                <button onclick="toggleLeaderboard()" class="p-2 bg-white/5 rounded-lg border border-white/10">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="flex-1 flex flex-row items-center justify-center gap-8 p-4 overflow-hidden">
+            <div class="flex-1 max-w-[220px] md:max-w-[460px] relative">
+                <div id="center-card" class="card mx-auto border-4 border-slate-800"></div>
+            </div>
+
+            <div class="opacity-10 font-black text-2xl italic text-white select-none">VS</div>
+
+            <div class="flex-1 max-w-[220px] md:max-w-[460px] relative">
+                <div id="player-card" class="card mx-auto"></div>
+            </div>
+        </div>
+
+        <footer id="score-bar" class="p-4 glass flex justify-center items-center gap-2"></footer>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="leaderboard-modal" class="fixed inset-0 z-50 hidden-ui bg-slate-950/90 flex items-center justify-center p-6 backdrop-blur-md">
+        <div class="bg-[#1e293b] rounded-[2rem] w-full max-w-xs overflow-hidden border border-white/10">
+            <div class="p-6 bg-indigo-600 text-white flex justify-between items-center">
+                <h3 class="text-xl font-black italic">ARENA SETTINGS</h3>
+                <button onclick="toggleLeaderboard()" class="p-1"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <div class="p-6 space-y-6">
+                <div class="space-y-4">
+                    <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Score Control</p>
+                    <div id="settings-scores" class="space-y-2"></div>
+                </div>
+                
+                <div class="pt-4 border-t border-white/5 space-y-3">
+                    <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Reconfigure Arena</p>
+                    <select id="reset-theme-select" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-[10px] font-black text-white uppercase tracking-widest outline-none cursor-pointer">
+                        <option value="random">🎲 Random Theme</option>
+                        <option value="food">🍕 Food & Treats</option>
+                        <option value="space">🚀 Space & Sci-Fi</option>
+                        <option value="nature">🌿 Nature & Wildlife</option>
+                    </select>
+                    <button onclick="resetArena()" class="w-full py-3 bg-white/10 text-white rounded-xl font-black text-[10px] uppercase tracking-widest border border-white/10 active:bg-white/20">Wipe & Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="fixed top-20 left-1/2 -translate-x-1/2 z-[100] pointer-events-none w-full max-w-[180px] space-y-1 px-4"></div>
+
+    <script>
+        let gameState = {
+            centerCardIndex: 0,
+            playerCardIndex: 1,
+            deck: [],
+            themeName: "Unknown",
+            teamScores: { Blue: 0, Red: 0, Green: 0, Yellow: 0 }
+        };
+
+        const THEMES = {
+            food: ["🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍈", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍅", "🍆", "🥑", "🥦", "🥬", "🥒", "🌶️", "🌽", "🥕", "🥔", "🍠", "🥐", "🍞", "🥖", "🥨", "🧀", "🥚", "🍳", "🥓", "🥩", "🍗", "🍖", "🌭", "🍔", "🍟", "🍕", "🥪", "🌮", "🌯", "🥗", "🥘", "🍝", "🍜", "🍲", "🍛", "🍣", "🍱", "🥟", "🍤", "🍙", "🍚", "🍘"],
+            space: ["🚀", "🛸", "🪐", "🌠", "🌌", "🌍", "🌕", "☀️", "☄️", "🛰️", "👨‍🚀", "👽", "👾", "🤖", "🛸", "🔭", "📡", "⚡", "🔋", "💿", "📟", "💻", "🖥️", "⌨️", "🖱️", "🎮", "🕹️", "📽️", "🎬", "💎", "🔮", "🧬", "🔬", "🔭", "🧪", "⚙️", "🛠️", "⚒️", "🛰️", "🚀", "☄️", "🛸", "📡", "🌌", "🌠", "🌑", "🌓", "🌔", "🌕", "🌍", "🌎", "🌏", "🔥", "💨", "💥", "🕶️", "🦾"],
+            nature: ["🦁", "🐯", "🦒", "🦊", "🦝", "🐮", "🐷", "🐨", "🐼", "🐸", "🦓", "🐴", "🦄", "🐔", "🐧", "🐦", "🐤", "🦅", "🦉", "🦇", "🦋", "🐌", "🐞", "🐜", "🐝", "🐢", "🐍", "🦖", "🐙", "🦑", "🦐", "🐡", "🐠", "🐬", "🐳", "🐋", "🦈", "🐊", "🐅", "🐆", "🦓", "🦍", "🦧", "🐘", "🦛", "🦏", "🐪", "🐫", "🦌", "🐕", "🐈", "🐇", "🐿️", "🦔", "🐾", "🐉", "🌵"]
+        };
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateDeck(themeKey) {
+            let actualKey = themeKey;
+            if (!THEMES[actualKey] || actualKey === 'random') {
+                const keys = Object.keys(THEMES);
+                actualKey = keys[Math.floor(Math.random() * keys.length)];
+            }
+            
+            gameState.themeName = actualKey.charAt(0).toUpperCase() + actualKey.slice(1);
+            let symbols = THEMES[actualKey];
+            
+            const cards = [];
+            const n = 7;
+            let card = [];
+            for (let i = 0; i <= n; i++) card.push(i);
+            cards.push(card);
+            for (let j = 0; j < n; j++) {
+                card = [0];
+                for (let k = 0; k < n; k++) card.push(n + 1 + j * n + k);
+                cards.push(card);
+            }
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j < n; j++) {
+                    card = [i + 1];
+                    for (let k = 0; k < n; k++) card.push(n + 1 + k * n + (i * k + j) % n);
+                    cards.push(card);
+                }
+            }
+            return cards.map(c => c.map(idx => symbols[idx]));
+        }
+
+        function startGame() {
+            const theme = document.getElementById('initial-theme-select').value;
+            gameState.deck = generateDeck(theme);
+            shuffleArray(gameState.deck);
+
+            gameState.centerCardIndex = 0;
+            gameState.playerCardIndex = 1;
+            gameState.teamScores = { Blue: 0, Red: 0, Green: 0, Yellow: 0 };
+
+            document.getElementById('landing-screen').classList.add('hidden-ui');
+            document.getElementById('game-ui').classList.remove('hidden-ui');
+            
+            renderAll();
+        }
+
+        function renderAll() {
+            renderCard('center-card', gameState.deck[gameState.centerCardIndex], true);
+            renderCard('player-card', gameState.deck[gameState.playerCardIndex], true);
+            renderFooterScores();
+            updateStatus();
+            document.getElementById('theme-display').innerText = `${gameState.themeName.toUpperCase()} ENVIRONMENT`;
+        }
+
+        function renderCard(containerId, symbolList, isInteractable) {
+            const container = document.getElementById(containerId);
+            if (!container || !symbolList) return;
+            container.innerHTML = '';
+            
+            // Fixed base positions
+            const basePositions = [
+                { t: '18%', l: '42%' },
+                { t: '32%', l: '18%' },
+                { t: '36%', l: '75%' },
+                { t: '55%', l: '35%' },
+                { t: '78%', l: '20%' },
+                { t: '75%', l: '65%' },
+                { t: '15%', l: '75%' },
+                { t: '55%', l: '82%' }
+            ];
+
+            // Shuffle the positions so each card has a unique layout
+            const shuffledPositions = shuffleArray([...basePositions]);
+
+            symbolList.forEach((sym, i) => {
+                const pos = shuffledPositions[i];
+                // Randomize scale and rotation per symbol for added difficulty
+                const randomScale = (0.7 + Math.random() * 0.5).toFixed(2);
+                const randomRot = Math.floor(Math.random() * 360);
+
+                const symEl = document.createElement('div');
+                symEl.className = `symbol font-bold`;
+                symEl.style.top = pos.t;
+                symEl.style.left = pos.l;
+                symEl.style.fontSize = `calc(clamp(1.4rem, 7vw, 3.8rem) * ${randomScale})`;
+                symEl.style.transform = `translate(-50%, -50%) rotate(${randomRot}deg)`;
+                symEl.innerText = sym;
+                
+                if (isInteractable) {
+                    symEl.onclick = (e) => {
+                        e.preventDefault(); e.stopPropagation();
+                        validateMatch(sym);
+                    };
+                }
+                container.appendChild(symEl);
+            });
+        }
+
+        function validateMatch(symbol) {
+            const centerCard = gameState.deck[gameState.centerCardIndex];
+            const playerCard = gameState.deck[gameState.playerCardIndex];
+            
+            if (centerCard.includes(symbol) && playerCard.includes(symbol)) {
+                document.getElementById('scoring-modal').classList.remove('hidden-ui');
+            } else {
+                showToast("NOT A MATCH!", "error");
+            }
+        }
+
+        function assignPoint(team) {
+            gameState.teamScores[team]++;
+            
+            document.getElementById('player-card').classList.add('matched');
+            setTimeout(() => document.getElementById('player-card').classList.remove('matched'), 400);
+
+            gameState.centerCardIndex = gameState.playerCardIndex;
+            gameState.playerCardIndex = (gameState.playerCardIndex + 1) % gameState.deck.length;
+
+            closeScoring();
+            renderAll();
+            showToast(`${team.toUpperCase()} SCORED!`, "success");
+        }
+
+        function closeScoring() {
+            document.getElementById('scoring-modal').classList.add('hidden-ui');
+        }
+
+        function renderFooterScores() {
+            const footer = document.getElementById('score-bar');
+            footer.innerHTML = '';
+            Object.entries(gameState.teamScores).forEach(([team, score]) => {
+                const div = document.createElement('div');
+                div.className = `score-pill p-2 rounded-xl text-center`;
+                div.innerHTML = `<p class="text-[6px] font-black team-text-${team.toLowerCase()} tracking-widest leading-none">${team}</p><p class="text-lg font-black text-white">${score}</p>`;
+                footer.appendChild(div);
+            });
+        }
+
+        function updateStatus() {
+            document.getElementById('game-status').innerText = `MATCH ${gameState.centerCardIndex + 1}/${gameState.deck.length}`;
+        }
+
+        function toggleLeaderboard() {
+            const modal = document.getElementById('leaderboard-modal');
+            if (modal.classList.contains('hidden-ui')) {
+                const settingsList = document.getElementById('settings-scores');
+                settingsList.innerHTML = '';
+                Object.entries(gameState.teamScores).forEach(([team, score]) => {
+                    const row = document.createElement('div');
+                    row.className = `flex items-center justify-between p-3 bg-white/5 rounded-xl border border-white/5`;
+                    row.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full team-bg-${team.toLowerCase()}"></div>
+                            <span class="text-xs font-black text-white">${team} TEAM</span>
+                        </div>
+                        <span class="text-xl font-black team-text-${team.toLowerCase()}">${score}</span>
+                    `;
+                    settingsList.appendChild(row);
+                });
+                modal.classList.remove('hidden-ui');
+            } else {
+                modal.classList.add('hidden-ui');
+            }
+        }
+
+        function resetArena() {
+            if (!confirm("RESET THE ARENA? ALL SCORES WILL BE LOST.")) return;
+            const themeChoice = document.getElementById('reset-theme-select').value;
+            gameState.deck = generateDeck(themeChoice);
+            shuffleArray(gameState.deck);
+            gameState.centerCardIndex = 0;
+            gameState.playerCardIndex = 1;
+            gameState.teamScores = { Blue: 0, Red: 0, Green: 0, Yellow: 0 };
+            
+            toggleLeaderboard();
+            renderAll();
+            showToast("ARENA RECONFIGURED", "info");
+        }
+
+        function showToast(msg, type = "info") {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const colors = { success: 'bg-indigo-600', error: 'bg-red-600', info: 'bg-slate-800' };
+            toast.className = `${colors[type]} text-white px-3 py-2 rounded-full font-black text-[8px] tracking-widest text-center shadow-2xl animate-bounce border border-white/10`;
+            toast.innerText = msg;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
