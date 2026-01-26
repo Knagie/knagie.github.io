@@ -519,7 +519,7 @@ body:not(.loaded) .hero > * {
 .cert-info p {
   font-size: 0.7rem;
   margin-bottom: 0;
-  color: #4285F4;
+  color: var(--accent-color); /* Match theme instead of Google Blue */
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -541,9 +541,16 @@ body:not(.loaded) .hero > * {
   .floating-social {
     display: none;
   }
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  
+  /* Force single column for denser sections on portrait tablets */
+  #about .grid {
+    grid-template-columns: 1fr;
   }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
   .card[style*="grid-column: span 2"] {
     grid-column: span 1 !important;
   }
