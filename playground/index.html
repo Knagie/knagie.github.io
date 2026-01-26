@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knagie | Playground</title>
+    <link rel="stylesheet" href="../includes/modern.css">
+    <style>
+        .playground-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5rem 2rem;
+            background: #050505;
+        }
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 3rem;
+        }
+        .file-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .file-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-color);
+        }
+        .file-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        .file-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .back-home {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="playground-container">
+        <a href="../" class="back-home"><i class="fas fa-arrow-left"></i> Back Home</a>
+        <h1>Playground</h1>
+        <p>A collection of experiments, prototypes, and creative sketches.</p>
+        
+        <div class="file-grid">
+            <a href="fancy-UGT.html" class="file-card">
+                <h3>Fancy UGT</h3>
+                <p>A polished version of the Universal Greeting Tool.</p>
+            </a>
+            <a href="UGT.html" class="file-card">
+                <h3>UGT</h3>
+                <p>Simple greeting tool experiment.</p>
+            </a>
+            <a href="calendar-planner.html" class="file-card">
+                <h3>Calendar Planner</h3>
+                <p>Custom calendar and planning interface prototype.</p>
+            </a>
+            <a href="dobble.html" class="file-card">
+                <h3>Dobble</h3>
+                <p>Interactive card game logic experiment.</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
