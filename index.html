@@ -31,6 +31,13 @@
         
     </div>
 
+    </div>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <section class="hero">
         <div class="content-wrapper">
             <h1>Knagie</h1>
@@ -314,6 +321,20 @@
         }
 
         startTerminal();
+
+        // Back to Top Logic
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         // Secret Status Logic
         const secretStatus = document.getElementById('secret-status');
