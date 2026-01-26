@@ -11,6 +11,14 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script>
+        // Failsafe to ensure React is ready
+        window.addEventListener('error', function(e) {
+            if (e.message.includes('React is not defined')) {
+                console.error('External scripts failed to load. Check your internet connection.');
+            }
+        });
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
@@ -28,9 +36,13 @@
     </style>
 </head>
 <body class="bg-slate-50">
-    <div id="root"></div>
+    <div id="root">
+        <div class="flex items-center justify-center min-h-screen text-slate-400 font-medium animate-pulse">
+            Booting Visual Timeline Planner...
+        </div>
+    </div>
 
-    <script type="text/babel">
+    <script type="text/babel" data-presets="env,react">
         const { useState, useEffect, useMemo } = React;
         
         // Internal Icon component using Inline SVGs for maximum reliability on hosted pages
@@ -124,12 +136,19 @@
 
             const applyRangeToMap = (map, startStr, endStr, timelineId) => {
                 if (!startStr || !endStr) return;
-                const start = new Date(startStr);
-                const end = new Date(endStr);
+                
+                // Parse date-only strings as local time to avoid timezone shifts
+                const [sY, sM, sD] = startStr.split('-').map(Number);
+                const [eY, eM, eD] = endStr.split('-').map(Number);
+                
+                const start = new Date(sY, sM - 1, sD);
+                const end = new Date(eY, eM - 1, eD);
+                
                 if (isNaN(start.getTime()) || isNaN(end.getTime())) return;
+                
                 let current = new Date(start);
                 while (current <= end) {
-                    const dateStr = current.toISOString().split('T')[0];
+                    const dateStr = formatDate(current.getFullYear(), current.getMonth(), current.getDate());
                     const existing = map.get(dateStr) || new Set();
                     existing.add(timelineId);
                     map.set(dateStr, existing);
@@ -181,7 +200,9 @@
                 for (let day = 1; day <= daysInMonth; day++) {
                     const dateStr = formatDate(currentYear, monthIdx, day);
                     const activeIds = dateMap.get(dateStr) || new Set();
-                    const isToday = new Date().toISOString().split('T')[0] === dateStr;
+                    
+                    const now = new Date();
+                    const isToday = formatDate(now.getFullYear(), now.getMonth(), now.getDate()) === dateStr;
                     days.push(
                         <div key={dateStr} className="relative h-10 w-10 md:h-12 md:w-12 flex flex-col items-center justify-center">
                             <button
