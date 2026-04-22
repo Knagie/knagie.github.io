@@ -512,11 +512,7 @@ body:not(.loaded) .hero > * {
   transition: all 0.3s ease;
 }
 
-.skill-item:hover {
-  background: var(--accent-gradient);
-  color: #000;
-  transform: translateY(-5px);
-}
+
 
 .skill-item i {
   font-size: 2rem;
